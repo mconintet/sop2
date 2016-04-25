@@ -77,7 +77,7 @@ define({
             this._tmpDiv.innerHTML = this.layout;
 
             var me = this;
-            sop.$all('script[type="text/jsTpl"]', this._tmpDiv).forEach(function (e) {
+            sop.$all('script[type="text/dtd"]', this._tmpDiv).forEach(function (e) {
                 var n = e.dataset.name;
                 if (!n) {
                     throw new Error('there muse be a name of child tpl, stage: ' + me.route);

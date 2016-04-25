@@ -21,6 +21,8 @@ define({
 
             this.previousStage = null;
             this.currentStage = null;
+
+            this.defaultRoute = '';
         };
 
         sop.extendProto(Application, sop.Observable);
@@ -50,6 +52,7 @@ define({
          * @param route {String} Route string
          */
         Application.prototype.dispatch = function (route) {
+            route = route === '' ? this.defaultRoute || '' : route;
             var stage = this.stages[route];
             if (!stage) {
                 throw new Error('the stage assorted with route: ' + route + ' does not exist');
@@ -125,7 +128,7 @@ define({
             var me = this;
 
             var viewport = sop.$one('.viewport');
-            if(!viewport){
+            if (!viewport) {
                 viewport = document.createElement('div');
                 viewport.className = 'viewport';
                 document.body.appendChild(viewport);
